@@ -2,13 +2,17 @@
 
 ## ⚡ Pasos Rápidos para Empezar
 
-### 1️⃣ Abrir la Aplicación
-- Abre el archivo `login.html` con tu navegador web preferido
+### 1️⃣ Ver tu Negocio Online
+- Abre el archivo `index.html` con tu navegador web
+- **¡La página pública ya está lista!** Muestra todos tus servicios profesionalmente
+
+### 2️⃣ Administrar Servicios (Solo cuando necesites editar)
+- En la página principal, haz clic en "**Admin**" (esquina superior derecha)
 - **Credenciales de acceso:**
   - **Usuario:** `admin`
   - **Contraseña:** `valkyria2025`
 
-### 2️⃣ Instalar como App (Opcional pero Recomendado)
+### 3️⃣ Instalar como App (Opcional pero Recomendado)
 1. **En Chrome/Edge:**
    - Busca el ícono ⚿ en la barra de direcciones
    - Haz clic en "Instalar VALKYRIA NAIL STUDIO"
@@ -21,27 +25,34 @@
    - Toca los 3 puntos ⋮ del menú
    - Selecciona "Instalar app"
 
-### 3️⃣ Primeros Pasos
-1. **Marca "Recordar sesión"** para no tener que volver a loguearte
-2. **Explora el dashboard** - verás 5 servicios de ejemplo
-3. **Prueba agregar un nuevo servicio** con el botón "Nuevo Servicio"
+## 🌟 Nuevas Características
 
-## 📱 Funciona Sin Internet
-- Una vez cargada la primera vez, **funciona completamente offline**
-- Tus datos se guardan localmente en tu dispositivo
-- No necesitas conexión a internet para usar la app
+### 📄 Página Pública (`index.html`)
+- ✅ **Catálogo de servicios** visible para todos
+- ✅ **Información del negocio** profesional
+- ✅ **Formulario de contacto** para clientes
+- ✅ **Diseño atractivo** para atraer clientes
+- ✅ **Botón de WhatsApp** flotante
+- ✅ **Secciones:** Inicio, Servicios, Sobre Nosotros, Contacto
+
+### 🔐 Área Administrativa (`admin.html`)
+- ✅ **Acceso protegido** solo con login
+- ✅ **Gestión completa** de servicios
+- ✅ **Estadísticas** del negocio
+- ✅ **Botón para ver** la página pública
+
+## 📱 Funcionamiento
+1. **Los clientes ven** `index.html` - Tu negocio online
+2. **Tú administras** desde `admin.html` - Panel de control
+3. **Los cambios se reflejan** automáticamente en la página pública
 
 ## 🎯 Funciones Principales
-- ➕ **Agregar servicios** con precios y categorías
-- ✏️ **Editar precios** fácilmente cuando cambien
-- 🔍 **Buscar y filtrar** servicios
-- 📊 **Ver estadísticas** automáticas
-- 📱 **Usar en cualquier dispositivo** (móvil, tablet, PC)
-
-## ❓ ¿Necesitas Ayuda?
-- Revisa el archivo `README.md` para instrucciones completas
-- Todos los datos se guardan automáticamente
-- La app incluye notificaciones de confirmación para cada acción
+- 👁️ **Página pública** atractiva para clientes
+- ➕ **Agregar servicios** (solo admin)
+- ✏️ **Editar precios** fácilmente (solo admin)
+- 🔍 **Catálogo filtrable** por categorías (público)
+- 📊 **Estadísticas** automáticas (solo admin)
+- 📱 **Responsive** - se ve perfecto en todos los dispositivos
 
 ---
-**¡Ya está lista para usar! 🎉**
+**¡Ya tienes tu negocio online! 🎉**

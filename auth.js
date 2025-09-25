@@ -27,8 +27,8 @@ class AuthManager {
             }
         }
 
-        // If not logged in and not on login page, redirect to login
-        if (!window.location.pathname.includes('login.html')) {
+        // If not logged in and on admin page, redirect to login
+        if (window.location.pathname.includes('admin.html')) {
             this.redirectToLogin();
         }
     }
@@ -93,7 +93,7 @@ class AuthManager {
     }
 
     redirectToDashboard() {
-        window.location.href = 'index.html';
+        window.location.href = 'admin.html';
     }
 
     delay(ms) {

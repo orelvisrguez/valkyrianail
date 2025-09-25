@@ -3,207 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VALKYRIA NAIL STUDIO - Dashboard</title>
-    <meta name="description" content="Panel de administración para VALKYRIA NAIL STUDIO">
+    <title>VALKYRIA NAIL STUDIO - Servicios de Manicuría Premium</title>
+    <meta name="description" content="VALKYRIA NAIL STUDIO - Servicios profesionales de manicuría, pedicuría, nail art y más. Calidad premium para tus uñas.">
+    <meta name="keywords" content="manicuría, pedicuría, nail art, uñas, belleza, VALKYRIA">
     <meta name="theme-color" content="#d946ef">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <div class="logo">
-                <i class="fas fa-gem"></i>
-                <span>VALKYRIA NAIL STUDIO</span>
+<body class="public-page">
+    <!-- Navigation Header -->
+    <header class="public-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-gem"></i>
+                    <span>VALKYRIA NAIL STUDIO</span>
+                </div>
+                <div class="nav-menu">
+                    <a href="#inicio" class="nav-link">Inicio</a>
+                    <a href="#servicios" class="nav-link">Servicios</a>
+                    <a href="#sobre-nosotros" class="nav-link">Sobre Nosotros</a>
+                    <a href="#contacto" class="nav-link">Contacto</a>
+                    <a href="login.html" class="admin-btn">
+                        <i class="fas fa-cog"></i> Admin
+                    </a>
+                </div>
+                <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
-            <div class="header-actions">
-                <button class="theme-toggle" onclick="toggleTheme()">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="logout-btn" onclick="logout()">
-                    <i class="fas fa-sign-out-alt"></i> Salir
-                </button>
-            </div>
-        </div>
+        </nav>
     </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Stats Cards -->
-        <section class="stats-section">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon">
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="highlight">VALKYRIA</span><br>
+                    NAIL STUDIO
+                </h1>
+                <p class="hero-subtitle">
+                    Servicios premium de manicuría y nail art.<br>
+                    Donde tus uñas se convierten en obras de arte.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#servicios" class="cta-button primary">
                         <i class="fas fa-palette"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3 id="total-services">0</h3>
-                        <p>Total Servicios</p>
-                    </div>
+                        Ver Servicios
+                    </a>
+                    <a href="#contacto" class="cta-button secondary">
+                        <i class="fas fa-phone"></i>
+                        Reservar Cita
+                    </a>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="hero-image">
+                <div class="hero-decoration">
+                    <div class="floating-icon">
+                        <i class="fas fa-gem"></i>
                     </div>
-                    <div class="stat-info">
-                        <h3 id="avg-price">$0</h3>
-                        <p>Precio Promedio</p>
+                    <div class="floating-icon">
+                        <i class="fas fa-sparkles"></i>
                     </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-tags"></i>
+                    <div class="floating-icon">
+                        <i class="fas fa-heart"></i>
                     </div>
-                    <div class="stat-info">
-                        <h3 id="total-categories">0</h3>
-                        <p>Categorías</p>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="stat-info">
-                        <h3 id="price-range">$0</h3>
-                        <p>Rango de Precios</p>
+                    <div class="floating-icon">
+                        <i class="fas fa-star"></i>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Controls Section -->
-        <section class="controls-section">
-            <div class="controls-header">
-                <h2>Gestión de Servicios</h2>
-                <button class="add-service-btn" onclick="openAddModal()">
-                    <i class="fas fa-plus"></i> Nuevo Servicio
-                </button>
+    <!-- Services Section -->
+    <section id="servicios" class="services-section-public">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <p class="section-subtitle">Descubre nuestra gama completa de servicios profesionales</p>
             </div>
             
-            <div class="controls-bar">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="search-input" placeholder="Buscar servicios..." oninput="filterServices()">
-                </div>
-                
-                <div class="filter-controls">
-                    <select id="category-filter" onchange="filterServices()">
-                        <option value="">Todas las categorías</option>
-                        <option value="Manicure">Manicure</option>
-                        <option value="Pedicure">Pedicure</option>
-                        <option value="Nail Art">Nail Art</option>
-                        <option value="Extensiones">Extensiones</option>
-                        <option value="Tratamientos">Tratamientos</option>
-                        <option value="Otros">Otros</option>
-                    </select>
-                    
-                    <select id="sort-select" onchange="sortServices()">
-                        <option value="name-asc">Nombre A-Z</option>
-                        <option value="name-desc">Nombre Z-A</option>
-                        <option value="price-asc">Precio Menor-Mayor</option>
-                        <option value="price-desc">Precio Mayor-Menor</option>
-                        <option value="category">Por Categoría</option>
-                    </select>
-                </div>
-                
-                <button class="export-btn" onclick="exportServices()">
-                    <i class="fas fa-download"></i> Exportar
-                </button>
+            <!-- Service Categories Filter -->
+            <div class="category-filter">
+                <button class="category-btn active" onclick="filterPublicServices('')">Todos</button>
+                <button class="category-btn" onclick="filterPublicServices('Manicure')">Manicure</button>
+                <button class="category-btn" onclick="filterPublicServices('Pedicure')">Pedicure</button>
+                <button class="category-btn" onclick="filterPublicServices('Nail Art')">Nail Art</button>
+                <button class="category-btn" onclick="filterPublicServices('Extensiones')">Extensiones</button>
+                <button class="category-btn" onclick="filterPublicServices('Tratamientos')">Tratamientos</button>
             </div>
-        </section>
-
-        <!-- Services Section -->
-        <section class="services-section">
-            <div id="services-container" class="services-grid">
+            
+            <!-- Services Grid -->
+            <div id="public-services-container" class="public-services-grid">
                 <!-- Services will be loaded here -->
             </div>
-            <div id="no-services" class="no-services hidden">
+            
+            <!-- No services fallback -->
+            <div id="no-public-services" class="no-services-public hidden">
                 <i class="fas fa-spa"></i>
-                <h3>No hay servicios registrados</h3>
-                <p>Comienza agregando tu primer servicio</p>
-                <button class="add-service-btn" onclick="openAddModal()">
-                    <i class="fas fa-plus"></i> Agregar Servicio
-                </button>
-            </div>
-        </section>
-    </main>
-
-    <!-- Add/Edit Service Modal -->
-    <div id="service-modal" class="modal hidden">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modal-title">Nuevo Servicio</h3>
-                <button class="close-btn" onclick="closeModal()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <form id="service-form" onsubmit="saveService(event)">
-                <div class="form-group">
-                    <label for="service-name">Nombre del Servicio</label>
-                    <input type="text" id="service-name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="service-category">Categoría</label>
-                    <select id="service-category" required>
-                        <option value="">Seleccionar categoría</option>
-                        <option value="Manicure">Manicure</option>
-                        <option value="Pedicure">Pedicure</option>
-                        <option value="Nail Art">Nail Art</option>
-                        <option value="Extensiones">Extensiones</option>
-                        <option value="Tratamientos">Tratamientos</option>
-                        <option value="Otros">Otros</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="service-price">Precio ($)</label>
-                    <input type="number" id="service-price" min="0" step="0.01" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="service-duration">Duración (minutos)</label>
-                    <input type="number" id="service-duration" min="5" step="5" placeholder="60">
-                </div>
-                
-                <div class="form-group">
-                    <label for="service-description">Descripción</label>
-                    <textarea id="service-description" rows="3" placeholder="Descripción opcional del servicio..."></textarea>
-                </div>
-                
-                <div class="modal-actions">
-                    <button type="button" class="cancel-btn" onclick="closeModal()">Cancelar</button>
-                    <button type="submit" class="save-btn">Guardar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Delete Confirmation Modal -->
-    <div id="delete-modal" class="modal hidden">
-        <div class="modal-content small">
-            <div class="modal-header">
-                <h3>Confirmar Eliminación</h3>
-            </div>
-            <p>¿Estás segura de que deseas eliminar este servicio?</p>
-            <div class="modal-actions">
-                <button type="button" class="cancel-btn" onclick="closeDeleteModal()">Cancelar</button>
-                <button type="button" class="delete-btn" onclick="confirmDelete()">Eliminar</button>
+                <h3>Próximamente más servicios</h3>
+                <p>Estamos preparando increíbles servicios para ti</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Loading Spinner -->
-    <div id="loading" class="loading hidden">
-        <div class="spinner"></div>
-    </div>
+    <!-- About Section -->
+    <section id="sobre-nosotros" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Sobre Nosotros</h2>
+                    <p class="about-description">
+                        En <strong>VALKYRIA NAIL STUDIO</strong>, combinamos técnica profesional con creatividad artística 
+                        para brindarte la mejor experiencia en cuidado de uñas. Nuestro compromiso es realzar tu belleza 
+                        natural con servicios de alta calidad y atención personalizada.
+                    </p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-award"></i>
+                            <h3>Calidad Premium</h3>
+                            <p>Productos y técnicas de la más alta calidad</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-palette"></i>
+                            <h3>Diseños Únicos</h3>
+                            <p>Nail art personalizado según tu estilo</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-heart"></i>
+                            <h3>Atención Personalizada</h3>
+                            <p>Cada cliente es único y especial</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Higiene Total</h3>
+                            <p>Protocolo de sanitización estricto</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-gem"></i>
+                        <p>VALKYRIA<br>NAIL STUDIO</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contáctanos</h2>
+                <p class="section-subtitle">Agenda tu cita y transforma tus uñas</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Ubicación</h3>
+                            <p>Calle Principal #123<br>Centro de la Ciudad</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Teléfono</h3>
+                            <p>+57 300 123 4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Horarios</h3>
+                            <p>Lunes a Viernes: 9:00 AM - 7:00 PM<br>
+                               Sábados: 9:00 AM - 5:00 PM<br>
+                               Domingos: Cerrado</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@valkyrianailtudio.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contact-form" onsubmit="handleContactForm(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="name" required placeholder=" ">
+                                <label for="name">Nombre completo</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="phone" required placeholder=" ">
+                                <label for="phone">Teléfono</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" id="email" required placeholder=" ">
+                            <label for="email">Correo electrónico</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="service" required>
+                                <option value="">Selecciona un servicio</option>
+                                <option value="manicure">Manicure</option>
+                                <option value="pedicure">Pedicure</option>
+                                <option value="nail-art">Nail Art</option>
+                                <option value="extensiones">Extensiones</option>
+                                <option value="tratamientos">Tratamientos</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                            <label for="service">Servicio de interés</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="message" rows="4" required placeholder=" "></textarea>
+                            <label for="message">Mensaje</label>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-gem"></i>
+                        <span>VALKYRIA NAIL STUDIO</span>
+                    </div>
+                    <p>Transformando uñas, creando arte, inspirando belleza.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Servicios</h3>
+                    <ul class="footer-links">
+                        <li><a href="#servicios">Manicure</a></li>
+                        <li><a href="#servicios">Pedicure</a></li>
+                        <li><a href="#servicios">Nail Art</a></li>
+                        <li><a href="#servicios">Extensiones</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> +57 300 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@valkyrianailtudio.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Calle Principal #123</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Horarios</h3>
+                    <ul class="footer-links">
+                        <li>Lun - Vie: 9:00 AM - 7:00 PM</li>
+                        <li>Sábados: 9:00 AM - 5:00 PM</li>
+                        <li>Domingos: Cerrado</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 VALKYRIA NAIL STUDIO. Todos los derechos reservados.</p>
+                <div class="footer-admin">
+                    <a href="login.html" class="admin-link">
+                        <i class="fas fa-cog"></i> Panel Administrativo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/573001234567" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <!-- Toast Notifications -->
     <div id="toast-container" class="toast-container"></div>
 
-    <script src="auth.js"></script>
-    <script src="app.js"></script>
+    <!-- Scripts -->
+    <script src="public.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>

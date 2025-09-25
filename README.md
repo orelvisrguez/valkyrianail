@@ -62,11 +62,13 @@ Aplicación Web Progresiva (PWA) diseñada para la gestión completa de servicio
 
 ```
 valkyria-nail-studio/
-├── index.html          # Dashboard principal
+├── index.html          # Página pública del negocio  
 ├── login.html          # Página de autenticación
+├── admin.html          # Dashboard administrativo
 ├── styles.css          # Estilos CSS completos
-├── app.js             # Lógica principal de la aplicación
+├── app.js             # Lógica del panel administrativo
 ├── auth.js            # Sistema de autenticación
+├── public.js          # Lógica de la página pública
 ├── manifest.json      # Configuración PWA
 ├── service-worker.js  # Funcionalidad offline
 └── README.md          # Este archivo
@@ -74,7 +76,19 @@ valkyria-nail-studio/
 
 ## 🎯 Uso de la Aplicación
 
-### Acceso Inicial
+### Estructura de Páginas
+- **`index.html`** - Página pública de tu negocio (sin login requerido)
+- **`login.html`** - Acceso administrativo 
+- **`admin.html`** - Panel de administración de servicios
+
+### Para Clientes (Página Pública)
+- Abre `index.html` directamente
+- Ve todos los servicios disponibles
+- Información completa del negocio
+- Formulario de contacto
+- Botón de WhatsApp flotante
+
+### Para Administración (Acceso Privado)
 1. **Usuario**: `admin`
 2. **Contraseña**: `valkyria2025`
 3. Marca "Recordar sesión" para no tener que volver a loguearse
