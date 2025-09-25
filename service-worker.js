@@ -1,5 +1,5 @@
 // Service Worker for VALKYRIA NAIL STUDIO PWA
-const CACHE_NAME = 'valkyria-nail-studio-v1.0.0';
+const CACHE_NAME = 'valkyria-nail-studio-v1.1.0';
 const urlsToCache = [
     './',
     './index.html',
@@ -10,6 +10,13 @@ const urlsToCache = [
     './auth.js',
     './public.js',
     './manifest.json',
+    // Gallery Images
+    './imgs/professional_nail_art_manicure_colorful_design_salon_work.jpg',
+    './imgs/elegant_classic_french_manicure_glossy_nails.jpg',
+    './imgs/colorful_gel_nail_art_designs_beauty_salon.jpg',
+    './imgs/professional_acrylic_nail_extensions_clear_tips_salon_gallery.jpg',
+    './imgs/glittery_sparkle_rose_gold_nail_art_design_rhinestones.jpg',
+    './imgs/pedicure_daisy_french_tip_nail_art_toes_design.jpg',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
 ];
 

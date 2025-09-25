@@ -333,3 +333,189 @@ window.addEventListener('scroll', function() {
         navbar.classList.remove('scrolled');
     }
 });
+
+// Gallery functionality
+function setupGallery() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            openGalleryModal(index);
+        });
+    });
+}
+
+function openGalleryModal(imageIndex) {
+    const images = [
+        {
+            src: 'imgs/professional_nail_art_manicure_colorful_design_salon_work.jpg',
+            title: 'Trabajo de Nail Art Profesional',
+            description: 'Diseños coloridos y creativos realizados por nuestro equipo especializado'
+        },
+        {
+            src: 'imgs/elegant_classic_french_manicure_glossy_nails.jpg',
+            title: 'Manicura Francesa Clásica',
+            description: 'Elegante manicura francesa con acabado glossy perfecto'
+        },
+        {
+            src: 'imgs/colorful_gel_nail_art_designs_beauty_salon.jpg',
+            title: 'Diseños de Nail Art con Gel',
+            description: 'Variedad de diseños coloridos con gel de alta calidad'
+        },
+        {
+            src: 'imgs/professional_acrylic_nail_extensions_clear_tips_salon_gallery.jpg',
+            title: 'Extensiones Acrílicas Profesionales',
+            description: 'Extensiones de uñas acrílicas con tips transparentes'
+        },
+        {
+            src: 'imgs/glittery_sparkle_rose_gold_nail_art_design_rhinestones.jpg',
+            title: 'Nail Art con Brillos y Pedrería',
+            description: 'Diseños glamorosos con brillos dorado rosado y piedras'
+        },
+        {
+            src: 'imgs/pedicure_daisy_french_tip_nail_art_toes_design.jpg',
+            title: 'Pedicura con Nail Art Floral',
+            description: 'Hermosa pedicura con diseños florales y french tips'
+        }
+    ];
+
+    const modal = createGalleryModal(images[imageIndex], imageIndex, images);
+    document.body.appendChild(modal);
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+    
+    // Close modal on outside click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeGalleryModal();
+        }
+    });
+    
+    // Close modal on escape key
+    document.addEventListener('keydown', handleEscapeKey);
+}
+
+function createGalleryModal(image, currentIndex, allImages) {
+    const modal = document.createElement('div');
+    modal.className = 'gallery-modal';
+    modal.id = 'galleryModal';
+    
+    modal.innerHTML = `
+        <div class="gallery-modal-content">
+            <button class="gallery-close-btn" onclick="closeGalleryModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            ${allImages.length > 1 ? `
+                <button class="gallery-nav-btn prev" onclick="navigateGallery(${currentIndex - 1})">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="gallery-nav-btn next" onclick="navigateGallery(${currentIndex + 1})">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            ` : ''}
+            
+            <div class="gallery-modal-image">
+                <img src="${image.src}" alt="${image.title}" id="galleryModalImage">
+            </div>
+            
+            <div class="gallery-modal-info">
+                <h3 id="galleryModalTitle">${image.title}</h3>
+                <p id="galleryModalDescription">${image.description}</p>
+                <div class="gallery-modal-counter">
+                    <span>${currentIndex + 1} de ${allImages.length}</span>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    return modal;
+}
+
+function navigateGallery(newIndex) {
+    const images = [
+        {
+            src: 'imgs/professional_nail_art_manicure_colorful_design_salon_work.jpg',
+            title: 'Trabajo de Nail Art Profesional',
+            description: 'Diseños coloridos y creativos realizados por nuestro equipo especializado'
+        },
+        {
+            src: 'imgs/elegant_classic_french_manicure_glossy_nails.jpg',
+            title: 'Manicura Francesa Clásica',
+            description: 'Elegante manicura francesa con acabado glossy perfecto'
+        },
+        {
+            src: 'imgs/colorful_gel_nail_art_designs_beauty_salon.jpg',
+            title: 'Diseños de Nail Art con Gel',
+            description: 'Variedad de diseños coloridos con gel de alta calidad'
+        },
+        {
+            src: 'imgs/professional_acrylic_nail_extensions_clear_tips_salon_gallery.jpg',
+            title: 'Extensiones Acrílicas Profesionales',
+            description: 'Extensiones de uñas acrílicas con tips transparentes'
+        },
+        {
+            src: 'imgs/glittery_sparkle_rose_gold_nail_art_design_rhinestones.jpg',
+            title: 'Nail Art con Brillos y Pedrería',
+            description: 'Diseños glamorosos con brillos dorado rosado y piedras'
+        },
+        {
+            src: 'imgs/pedicure_daisy_french_tip_nail_art_toes_design.jpg',
+            title: 'Pedicura con Nail Art Floral',
+            description: 'Hermosa pedicura con diseños florales y french tips'
+        }
+    ];
+    
+    // Handle wraparound
+    if (newIndex < 0) newIndex = images.length - 1;
+    if (newIndex >= images.length) newIndex = 0;
+    
+    const image = images[newIndex];
+    const modalImage = document.getElementById('galleryModalImage');
+    const modalTitle = document.getElementById('galleryModalTitle');
+    const modalDescription = document.getElementById('galleryModalDescription');
+    const counter = document.querySelector('.gallery-modal-counter span');
+    
+    // Update navigation buttons
+    const prevBtn = document.querySelector('.gallery-nav-btn.prev');
+    const nextBtn = document.querySelector('.gallery-nav-btn.next');
+    
+    if (prevBtn) prevBtn.onclick = () => navigateGallery(newIndex - 1);
+    if (nextBtn) nextBtn.onclick = () => navigateGallery(newIndex + 1);
+    
+    // Update content with fade effect
+    modalImage.style.opacity = '0.5';
+    
+    setTimeout(() => {
+        modalImage.src = image.src;
+        modalImage.alt = image.title;
+        modalTitle.textContent = image.title;
+        modalDescription.textContent = image.description;
+        counter.textContent = `${newIndex + 1} de ${images.length}`;
+        modalImage.style.opacity = '1';
+    }, 150);
+}
+
+function closeGalleryModal() {
+    const modal = document.getElementById('galleryModal');
+    if (modal) {
+        modal.remove();
+        document.body.style.overflow = 'auto';
+        document.removeEventListener('keydown', handleEscapeKey);
+    }
+}
+
+function handleEscapeKey(e) {
+    if (e.key === 'Escape') {
+        closeGalleryModal();
+    }
+}
+
+// Initialize gallery when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Small delay to ensure images are loaded
+    setTimeout(() => {
+        setupGallery();
+    }, 100);
+});
